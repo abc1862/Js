@@ -1,43 +1,34 @@
-<!DOCTYPE html>
-
+  
 <html>
     <head>
-        <title>
-            Regex
-        </title>
-    </head>
-    <body>
-        <div>
-            Regex : 
-            <input type="text">
-
-        </div>
-        <br/>
-        <div>
-            Subject String : 
-            <input type="text">
-        </div>
-        <br/>
-        <div>
-            <input type="button" value="Test Match" onclick="test()">
-            <input type="button" value="Show Match" onclick="disp()">
-
-        </div>
-
-
         <script>
-            var regex = document.getElementsByTagName('input')[0].value;
-            var string = document.getElementsByTagName('input')[1].value;
-
-            test = () => {
-                string.match(regex) ? alert('succesfull match') : alert("didn't match lol ");
+                function demoMatchClick(){
+                    var regexp = new RegExp(document.getElementById('regexp').value);
+                    var string = document.getElementById('string').value;
+                    if(string.match(regexp))
+                        alert('Successful match');
+                    else
+                        alert('Not a Successful match');
+                }
                 
-            }
+                function demoShowMatchClick(){
+                    var regexp = new RegExp(document.getElementById('regexp').value);
+                    var string = document.getElementById('string').value;
+                    var position = string.search(regexp);
+					var strr = string.match(regexp); 
+                    alert('Match at position '+position+': ' + strr);
+                }
 
-            disp = () => {
-                console.log(string.search(regex))
-            }
 
         </script>
+    </head>
+
+    <body>
+        <form>
+            <div>Regexp: <input type="text" id="regexp"></div><br/>
+            <div>Subject string: <input type="text" id="string"></div><br/>
+            <span><input type="button" id="testMatch" value="Test Match" onclick="demoMatchClick();"></span>
+            <span><input type="button" id="showMatch" value="Show Match" onclick="demoShowMatchClick();"></span>
+        </form>
     </body>
 </html>
