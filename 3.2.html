@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            function search(){
+                var wd= document.getElementById("wrd").value;
+                var q = document.getElementById("q").value;
+                document.write("Actual String     :" + wd);
+                document.write("<br>");
+                document.write("Query substring      :" + q);
+                document.write("<br>");
+                document.write("Index found     :"+wd.indexOf(q));
+            }
+        </script>
+    </head>
+    <body>
+        Word :
+        <input type="text" id="wrd"><br>
+        Query Word :
+        <input type="text" id="q" ><br>
+        <input type="button" value="Search Index" onclick="search()">
+    </body>
+</html>

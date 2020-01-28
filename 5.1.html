@@ -1,0 +1,51 @@
+<html>
+<head>
+<title> window example </title>
+</head>
+<script>
+function newW()
+{
+/*TODO:  get the height, width, left and top from the form object and pass the values to open method of window along with the name of the html file to be opened in the new window.*/
+    var wid = document.getElementById("wid").value;
+    var heit = document.getElementById("hght").value;
+    var left = document.getElementById("lef").value;
+    var top = document.getElementById("tp").value;
+    myWindow = open('','', 'height = 200,width = 600 , scrollbars = yes')
+    myWindow.resizeTo(heit,wid);
+    myWindow.moveTo(left,top);
+    var cont = "<html><head><title>fun</title></head><body>This is the new Window</body></html>"
+    myWindow.document.write(cont);
+}
+</script>
+<body >
+<form id="frmlab">
+<table border="1" cellspacing="8" cellpadding="10" bordercolor="blue">
+
+<tr>
+    <td colspan="4"> <b>Create New window</b></td>
+</tr>
+<tr><td colspan="4">window size</td></tr>
+<tr>
+    <td> Width :</td>
+    <td><input type="text" id="wid"></td>
+    <td>Height :</td>
+    <td><input type="text" id="hght"></td>
+</tr>
+<tr>
+    <td colspan="4">POSITION</td>
+</tr>
+<tr>
+    <td>Left   :</td>
+    <td><input type="text" id="lef"></td>
+    <td>Top    :</td>
+    <td><input type="text" id="tp"></td>
+</tr>
+<tr>
+    <td colspan="3"><input type="button" value="New Window" onclick = "newW()"></td>
+    <td><input type="reset" value="reset"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
+                

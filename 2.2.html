@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script>
+            function calc(){
+                var p = document.getElementById("p").value;
+                var i = document.getElementById("i").value;
+                var y = document.getElementById("y").value;
+
+                var ci = null;
+                ci = ((p*(1 + (i/100))^y) - p)
+                window.document.writeln("<html><body><pre>************************CALCULATE COMPOUND INTEREST ************************</pre>")
+                window.document.writeln("<br/><br/> Principal  : "+ p+"<br />")
+                window.document.writeln(" Interest  : "+ i+"<br />")
+                window.document.writeln(" years of interests  : "+ y+"<br />")
+                window.document.writeln("Compound Interest  : "+ (ci-1)+"<br />")
+                window.document.writeln("</body></html>")
+
+            }
+        </script>
+    </head>
+    <body>
+        <form action="get">
+            <span>
+                Principal :
+            </span>
+            <span>
+                <input type="text" id="p">
+            </span>
+            <br>
+            <span>
+                    Rate of interest :
+            </span>
+            <span>
+                <input type="text" id="i">
+            </span>
+            <br>
+            <span>
+                    number of years :
+            </span>
+            <span>
+                <input type="text" id="y">
+            </span>
+            <br>
+            <input type="button" value="calc" onclick="calc()">
+
+                
+        </form>
+    </body>
+</html>

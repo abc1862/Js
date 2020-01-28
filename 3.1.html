@@ -1,0 +1,19 @@
+<html>
+
+    <body>
+        <p></p>
+        <p></p>
+        <script>
+                var dat = new Date();
+                document.getElementsByTagName('p')[0].innerHTML = dat.toString();
+                if(dat.getHours() <12){
+                    document.getElementsByTagName('p')[1].innerHTML = 'Good Morning';
+                }
+                else if( 12 <= date.getHours() <=17){
+                    document.getElementsByTagName('p')[1].innerHTML = 'Good Afternoon';
+                }else{
+                    document.getElementsByTagName('p')[1].innerHTML = 'Good Evening';
+                }
+             </script>
+    </body>
+</html>

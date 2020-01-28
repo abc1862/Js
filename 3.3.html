@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            function loadans(){
+                var q = document.getElementById("t").value;
+                var p = document.getElementById("q2").value;
+                document.write("String       :" + q);
+                document.write("<br>Result of str.match("+p+")     :" + q.match(p));
+                document.write("<br>Result of str.substr(3,6)    : " + q.substr(3,6));
+            }
+        </script>
+    </head>
+    <body>
+        <form action="">
+        Word    :
+        <input type="text" id="t"><br>
+        query     :
+        <input type="text" id = "q2"><br>
+        <input type="button" value="Submit" onclick = "loadans()">
+    </form>
+    </body>
+</html>
