@@ -1,65 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+<html>
+    <head>
+        <script>
+                function validateForm(){
+                    var nameMatch = /^([a-z]|[A-Z]){3,10}$/;
+                    var phoneNumberMatch = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/;
+                    var emailMatch = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    var name = document.getElementById('name').value;
+                    if(!name.match(nameMatch))
+                        alert('Name field should be between 3  to 10 characters');
+                    var phone = document.getElementById('phone').value;
+                    if(!phone.match(phoneNumberMatch))
+                        alert('Phone Number  should be in xxx-xxxx-xxxx format ');
+                    var mail = document.getElementById('mail').value;
+                    if(!mail.match(emailMatch))
+                        alert('Enter valid email id');
+                }
+                function showQualifications(Graduation){
+                    if(Graduation.value=="UG"){
+                        var Qualification = document.getElementById('Qualification');
+                        var options = ["B.sc", "B.A", "B.Com"];
+                        Qualification.length = 0;
+                        for(i=0;i<3;i++){
+                            var option1 = document.createElement("option");
+                            option1.text = options[i];
+                            Qualification.add(option1);
+                        }
+                    }
+                    if(Graduation.value=="PG"){
+                        var Qualification = document.getElementById('Qualification');
+                        var options = ["M.A", "M.Tech", "MCA", "MBA"];
+                        Qualification.length = 0;
+                        for(i=0;i<3;i++){
+                            var option1 = document.createElement("option");
+                            option1.text = options[i];
+                            Qualification.add(option1);
+                        }
+                    }
+                }
+                function newWindow(){
+                    validateForm();
+                    var myWindow = window.open('','','width=500 height=500');
+                    var today = new Date();
+                    var dob = new Date(document.getElementById('date').value)
+                    var age = today.getFullYear() - dob.getFullYear();
+                    var months = today.getMonth() - dob.getMonth();
+                    if (months < 0 || (months === 0 && today.getDate() < dob.getDate())) {
+                        age = age - 1;
+                    }
+                    var newContent = "<html><body>"+
+                        "<table><tr><td>Name:</td><td>"+document.getElementById('name').value +
+                        "</td></tr><tr><td>Age:</td><td>"+age + 
+                        "</td></tr><tr><td>Phone Number:</td><td>"+document.getElementById('phone').value+
+                        "</td></tr><tr><td>Email:</td><td>"+ document.getElementById('mail').value +
+                        "</td></tr><tr><td>Graduation Level:</td><td>"+ document.getElementById('Graduation').value+
+                        "</td></tr><tr><td>Qualification:</td><td>" + document.getElementById('Qualification').value +
+                        "</td></tr></table></body></html>";
+                    myWindow.document.write(newContent);
+                }
+        </script>
+    </head>
+
     <body>
-
-        <div class="container">
-        <h2>Form</h2>
         <form>
-            <div class="form-group">
-            <label for="name">Name :</label>
-            <input type="text" class="form-control" minlength="3" maxlength="10" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="dob">DOB:</label>
-                <input type="date" class="form-control"  id="dob" required>
-            </div>
-            <div class="form-group">
-                <label for="tel">Phone number :</label>
-                <input type="tel" class="form-control" minlength="3" maxlength="10" id="tel" required>
-            </div>
-            <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" minlength="3" maxlength="40" id="" required>
-            </div>
-            <div class="checkbox">
-            <label><input type="checkbox" name="remember"> Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-default" onclick="preview()">Preview</button>
+            <table>
+                <tr><td>Name: </td><td><input type="text" id="name" required/></td></tr>
+                <tr><td>Date of Birth: </td><td><input type="date" id="date" required/></td></tr>
+                <tr><td>Phone Number: </td><td><input type="tel" id="phone" required/></td></tr>
+                <tr><td>Email: </td><td><input type="email" id="mail" required/></td></tr>
+                <tr><td>Graduation Level: </td>
+                    <td><input type="radio" value="UG" id="Graduation" onclick="showQualifications(this);">UG<input type="radio" value="PG" id="Graduation" onchange="showQualifications(this);">PG</td></tr>
+                <tr><td>Qualification:</td>
+                    <td><select id="Qualification">
+                        <option></option>
+                    </select></td></tr>
+                <tr><td><input type="submit" value="submit" onclick="validateForm();"></td>
+                    <td><input type="button" value="Preview" onclick="validateForm();newWindow();"></td></tr>
+            </table>
         </form>
-        </div>
-        
-
-
-    <script>
-        preview = () => {
-            var details = []
-            for(var i = 0; i < 4; i++){
-                details.push(document.getElementsByTagName('input')[i].value);
-            }
-            newWindow = window.open('','','width:500,height:500');
-            code = `<div>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </div>`
-            newWindow.document.write(code)
-            
-            for(var i = 0; i < 4; i++){
-                newWindow.document.getElementsByTagName('p')[i].innerHTML = details[i];
-            }
-        }
-    </script>
-
     </body>
 </html>
