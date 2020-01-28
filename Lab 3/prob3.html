@@ -1,0 +1,30 @@
+<html>
+    <head><title>String Methods</title></head>
+    <body>
+        <p id="g1">String is : </p>
+        <p id="g2">Result of str.match</p>
+        <p id="g3">Result of str.substr</p>
+        <p id="g4"></p>
+        <p id="g5"></p>
+        <script>
+            window.onload = k = () =>{
+                var d = 'University at Capgemini';
+                var e = 'Capgemini';
+                var f = 3;
+                var h = 6;
+                var i = d.match(e);
+                var j = d.substr(f,h);
+                var k = 'Hello Javascripters!';
+                var l1 = k.toLowerCase();
+                var l = k.toUpperCase();
+                document.getElementById('g5').innerHTML = l;
+                document.getElementById('g4').innerHTML = l1;
+                document.getElementById('g1').innerHTML += d;
+                document.getElementById('g2').innerHTML += '(' + e + ') : ' + i;
+                document.getElementById('g3').innerHTML += '(' + f + ',' + h + ') : ' + j;
+                
+
+            }
+        </script>
+    </body>
+</html>
